@@ -4,9 +4,10 @@ if ( post_password_required() ) {
 }
 
 $code_test_comment_count = get_comments_number();
+
 ?>
 
-<div id="comments" class="comments-area default-max-width <?php echo get_option( 'show_avatars' ) ? 'show-avatars' : ''; ?>">
+<div id="comments" class="comments-area <?php echo get_option( 'show_avatars' ) ? 'show-avatars' : ''; ?>">
 
 	<?php
 	if ( have_comments() ) :

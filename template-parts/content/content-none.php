@@ -1,18 +1,14 @@
 <?php
-/**
- * Template part for displaying a message that posts cannot be found
- */
-
+// Template part for displaying a message that posts cannot be found
 ?>
 
 <section class="no-results not-found">
-	<header class="page-header alignwide">
+	<header class="page-header">
 		<?php if ( is_search() ) : ?>
 
 			<h1 class="page-title">
 				<?php
 				printf(
-					/* translators: %s: search term. */
 					esc_html__( 'Results for "%s"', 'codetest' ),
 					'<span class="page-description search-term">' . esc_html( get_search_query() ) . '</span>'
 				);
@@ -26,14 +22,13 @@
 		<?php endif; ?>
 	</header><!-- .page-header -->
 
-	<div class="page-content default-max-width">
+	<div class="page-content">
 
 		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 
 			<?php
 			printf(
 				'<p>' . wp_kses(
-					/* translators: 1: link to WP admin new post page. */
 					__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'codetest' ),
 					array(
 						'a' => array(

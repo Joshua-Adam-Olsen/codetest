@@ -26,7 +26,7 @@ if ( ! function_exists( 'code_test_posted_by' ) ) {
 		if ( ! get_the_author_meta( 'description' ) && post_type_supports( get_post_type(), 'author' ) ) {
 			echo '<span class="byline">';
 			printf(
-				esc_html__( 'By %s', 'codetest' ),
+				esc_html__( ' By %s ', 'codetest' ),
 				'<a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '" rel="author">' . esc_html( get_the_author() ) . '</a>'
 			);
 			echo '</span>';
@@ -61,8 +61,8 @@ if ( ! function_exists( 'code_test_entry_meta_footer' ) ) {
 			// Edit post link.
 			edit_post_link(
 				sprintf(
-					esc_html__( 'Edit %s', 'codetest' ),
-					'<span class="screen-reader-text">' . get_the_title() . '</span>'
+					esc_html__( ' Edit %s', 'codetest' ),
+					'<span class="sr-only">' . get_the_title() . '</span>'
 				),
 				'<span class="edit-link">',
 				'</span><br>'
@@ -75,7 +75,7 @@ if ( ! function_exists( 'code_test_entry_meta_footer' ) ) {
 				$categories_list = get_the_category_list( __( ', ', 'codetest' ) );
 				if ( $categories_list ) {
 					printf(
-						'<span class="cat-links">' . esc_html__( 'Categorized as %s', 'codetest' ) . ' </span>',
+						'<span class="cat-links">' . esc_html__( 'Categorized as %s', 'codetest' ) . ' </span><br>',
 						$categories_list
 					);
 				}
@@ -100,7 +100,7 @@ if ( ! function_exists( 'code_test_entry_meta_footer' ) ) {
 			edit_post_link(
 				sprintf(
 					esc_html__( 'Edit %s', 'codetest' ),
-					'<span class="screen-reader-text">' . get_the_title() . '</span>'
+					'<span class="sr-only">' . get_the_title() . '</span>'
 				),
 				'<span class="edit-link">',
 				'</span>'
@@ -114,7 +114,7 @@ if ( ! function_exists( 'code_test_entry_meta_footer' ) ) {
 				$categories_list = get_the_category_list( __( ', ', 'codetest' ) );
 				if ( $categories_list ) {
 					printf(
-						'<span class="cat-links">' . esc_html__( 'Categorized as %s', 'codetest' ) . ' </span>',
+						'<span class="cat-links">' . esc_html__( 'Categorized as %s', 'codetest' ) . ' </span><br>',
 						$categories_list
 					);
 				}
@@ -155,7 +155,7 @@ if ( ! function_exists( 'code_test_post_thumbnail' ) ) {
 		<?php else : ?>
 
 			<figure class="post-thumbnail">
-				<a class="post-thumbnail-inner alignwide" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+				<a class="post-thumbnail-inner" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
 					<?php the_post_thumbnail( 'post-thumbnail' ); ?>
 				</a>
 				<?php if ( wp_get_attachment_caption( get_post_thumbnail_id() ) ) : ?>
@@ -202,6 +202,7 @@ if ( ! function_exists( 'code_test_the_posts_navigation' ) ) {
 					),
 					is_rtl() ? '&larr;' : '&rarr;'
 				),
+				'screen_reader_text' => ' ',
 			)
 		);
 	}

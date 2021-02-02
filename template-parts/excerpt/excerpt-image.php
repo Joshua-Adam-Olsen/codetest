@@ -1,14 +1,7 @@
 <?php
-/**
- * Show the appropriate content for the Image post format.
- */
-
-// If there is no featured-image, print the first image block found.
-if (
-	! code_test_can_show_post_thumbnail() &&
-	has_block( 'core/image', get_the_content() )
-) {
-
+// Show the appropriate content for the Image post format.
+if ( ! code_test_can_show_post_thumbnail() && has_block( 'core/image', get_the_content() ) ) {
+	// If there is no featured-image, print the first image block found.
 	code_test_print_first_instance_of_block( 'core/image', get_the_content() );
 }
 

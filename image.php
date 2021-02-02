@@ -7,7 +7,7 @@ while ( have_posts() ) {
 	the_post();
 	?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-		<header class="entry-header alignwide">
+		<header class="entry-header">
 			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		</header><!-- .entry-header -->
 
@@ -37,7 +37,7 @@ while ( have_posts() ) {
 			?>
 		</div><!-- .entry-content -->
 
-		<footer class="entry-footer default-max-width">
+		<footer class="entry-footer">
 			<?php
 			// Check if there is a parent, then add the published in link.
 			if ( wp_get_post_parent_id( $post ) ) {
@@ -52,7 +52,7 @@ while ( have_posts() ) {
 				edit_post_link(
 					sprintf(
 						esc_html__( 'Edit %s', 'codetest' ),
-						'<span class="screen-reader-text">' . get_the_title() . '</span>'
+						'<span class="sr-only">' . get_the_title() . '</span>'
 					),
 					'<span class="edit-link">',
 					'</span>'
@@ -63,7 +63,7 @@ while ( have_posts() ) {
 			$metadata = wp_get_attachment_metadata();
 			if ( $metadata ) {
 				printf(
-					'<span class="full-size-link"><span class="screen-reader-text">%1$s</span><a href="%2$s">%3$s &times; %4$s</a></span>',
+					'<span class="full-size-link"><span class="sr-only">%1$s</span><a href="%2$s">%3$s &times; %4$s</a></span>',
 					esc_html_x( 'Full size', 'Used before full size attachment link.', 'codetest' ),
 					esc_url( wp_get_attachment_url() ),
 					absint( $metadata['width'] ),
@@ -76,7 +76,7 @@ while ( have_posts() ) {
 				edit_post_link(
 					sprintf(
 						esc_html__( 'Edit %s', 'codetest' ),
-						'<span class="screen-reader-text">' . get_the_title() . '</span>'
+						'<span class="sr-only">' . get_the_title() . '</span>'
 					),
 					'<span class="edit-link">',
 					'</span><br>'

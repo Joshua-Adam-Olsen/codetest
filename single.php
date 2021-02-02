@@ -44,6 +44,7 @@ while ( have_posts() ) :
 		array(
 			'next_text' => '<p class="meta-nav">' . $codetest_next_label . $codetest_next . '</p><p class="post-title">%title</p>',
 			'prev_text' => '<p class="meta-nav">' . $codetest_prev . $codetest_previous_label . '</p><p class="post-title">%title</p>',
+			'screen_reader_text' => ' ',
 		)
 	);
 endwhile; // End of the loop.

@@ -1,6 +1,5 @@
 <?php
 $codetest_unique_id = wp_unique_id( 'search-form-' );
-
 $codetest_aria_label = ! empty( $args['aria_label'] ) ? 'aria-label="' . esc_attr( $args['aria_label'] ) . '"' : '';
 ?>
 <form role="search" <?php echo $codetest_aria_label; ?> method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">

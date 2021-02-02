@@ -1,7 +1,3 @@
 <?php
-/**
- * Show the appropriate content for the Status post format.
- */
-
-// Print the full content.
+// Show the appropriate content for the Status post format.
 the_content();

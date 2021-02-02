@@ -1,8 +1,5 @@
 <?php
-/**
- * Show the appropriate content for the Audio post format.
- */
-
+// Show the appropriate content for the Audio post format.
 $content = get_the_content();
 
 if ( has_block( 'core/audio', $content ) ) {

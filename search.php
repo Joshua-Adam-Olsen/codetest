@@ -4,7 +4,7 @@ get_header();
 
 if ( have_posts() ) {
 	?>
-	<header class="page-header alignwide">
+	<header class="page-header">
 		<h1 class="page-title">
 			<?php
 			printf(
@@ -15,7 +15,7 @@ if ( have_posts() ) {
 		</h1>
 	</header><!-- .page-header -->
 
-	<div class="search-result-count default-max-width">
+	<div class="search-result-count">
 		<?php
 		printf(
 			esc_html(
@@ -35,8 +35,8 @@ if ( have_posts() ) {
 	while ( have_posts() ) {
 		the_post();
 
-		// Include the Post-Format-specific template for the content.
-		get_template_part( 'template-parts/content/content-excerpt', get_post_format() );
+		// Include the content excerpt.
+		get_template_part( 'template-parts/content/content-excerpt' );
 	} // End the loop.
 
 	// Previous/next page navigation.

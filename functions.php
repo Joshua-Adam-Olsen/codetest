@@ -2,7 +2,7 @@
 // Require WordPress 5.3 or later.
 if ( version_compare( $GLOBALS['wp_version'], '5.3', '<' ) ) {
 
-	require get_template_directory() . '/inc/back-compat.php';
+	require get_template_directory() . '/includes/back-compat.php';
 }
 
 // Theme Setup.
@@ -56,8 +56,12 @@ if ( ! function_exists( 'code_test_setup' ) ) {
 		register_nav_menus(
 			array(
 				'primary' => esc_html__( 'Primary menu', 'codetest' ),
+				'footer' => esc_html__( 'Secondary menu', 'codetest' ),
 			)
 		);
+
+		// Register Custom Navigation Walker
+		require_once get_template_directory() . '/includes/menu-functions.php';
 
 		//Switch default core markup to output valid HTML5.
 		add_theme_support(
@@ -103,23 +107,6 @@ if ( ! function_exists( 'code_test_setup' ) ) {
 }
 add_action( 'after_setup_theme', 'code_test_setup' );
 
-//Register widget area.
-function code_test_widgets_init() {
-
-	register_sidebar(
-		array(
-			'name'          => esc_html__( 'Footer', 'codetest' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here to appear in your footer.', 'codetest' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		)
-	);
-}
-add_action( 'widgets_init', 'code_test_widgets_init' );
-
 // Set the content width in pixels, based on the theme's design and stylesheet.
 function code_test_content_width() {
 	// This variable is intended to be overruled from themes.
@@ -128,20 +115,27 @@ function code_test_content_width() {
 add_action( 'after_setup_theme', 'code_test_content_width', 0 );
 
 // Enqueue scripts and styles.
-function code_test_scripts() {
-	
+function code_test_scripts_and_styles() {
+
+	wp_enqueue_script( 'jQuery', '//code.jquery.com/jquery-3.4.1.slim.min.js' );
+
+	wp_enqueue_script( 'Popper', '//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' );
+
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/vendors/bootstrap/css/bootstrap.min.css' );
+
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/vendors/bootstrap/js/bootstrap.min.js' );
+
 	wp_enqueue_style( 'code-test-style', get_template_directory_uri() . '/style.css', array(), wp_get_theme()->get( 'Version' ) );
+
+	wp_enqueue_script( 'code-test-script', get_template_directory_uri() . '/assets/js/app.js', array(), wp_get_theme()->get( 'Version' ) );
 }
-add_action( 'wp_enqueue_scripts', 'code_test_scripts' );
+add_action( 'wp_enqueue_scripts', 'code_test_scripts_and_styles' );
 
 // Enhance the theme by hooking into WordPress.
-require get_template_directory() . '/inc/template-functions.php';
-
-// Menu functions and filters.
-require get_template_directory() . '/inc/menu-functions.php';
+require get_template_directory() . '/includes/template-functions.php';
 
 // Custom template tags for the theme.
-require get_template_directory() . '/inc/template-tags.php';
+require get_template_directory() . '/includes/template-tags.php';
 
 // Calculate classes for the main <html> element.
 function codetest_the_html_classes() {

@@ -7,3 +7,6 @@ Description: A basic WordPress theme
 Text Domain: codetest
 Version: 0.0.1 Tags: bootstrap 
 */
+
+/* Import from compiled CSS */
+@import 'assets/css/style.css';

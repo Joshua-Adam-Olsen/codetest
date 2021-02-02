@@ -1,26 +1,22 @@
 <?php
-/**
- * Displays the site navigation.
- */
-
+// Displays the site navigation.
 ?>
 
 <?php if ( has_nav_menu( 'primary' ) ) : ?>
-	<nav id="site-navigation" class="primary-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary menu', 'codetest' ); ?>">
-		<div class="menu-button-container">
-			<button id="primary-mobile-menu" class="button" aria-controls="primary-menu-list" aria-expanded="false">
-				<span class="dropdown-icon open"><?php esc_html_e( 'Menu', 'codetest' ); ?></span>
-				<span class="dropdown-icon close"><?php esc_html_e( 'Close', 'codetest' ); ?></span>
-			</button><!-- #primary-mobile-menu -->
-		</div><!-- .menu-button-container -->
+	<nav id="site-navigation" class="navbar navbar-expand-lg navbar-light bg-light" role="navigation" aria-label="primary navigation">
+		<a class="navbar-brand" href="<?php bloginfo( 'url' ); ?>"><?php bloginfo( 'name' ); ?></a>
+		<button id="navbar-toggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 		<?php
 		wp_nav_menu(
 			array(
 				'theme_location'  => 'primary',
-				'menu_class'      => 'menu-wrapper',
-				'container_class' => 'primary-menu-container',
-				'items_wrap'      => '<ul id="primary-menu-list" class="%2$s">%3$s</ul>',
-				'fallback_cb'     => false,
+				'menu_class'      => 'navbar-nav mr-auto',
+				'container_id' 		=> 'navbar',
+				'container_class' => 'collapse navbar-collapse',
+				'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+    		'walker'          => new WP_Bootstrap_Navwalker(),
 			)
 		);
 		?>

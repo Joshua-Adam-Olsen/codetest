@@ -1,6 +1,3 @@
 <?php
-/**
- * Show the excerpt.
- */
-
+// Show the excerpt.
 the_excerpt();

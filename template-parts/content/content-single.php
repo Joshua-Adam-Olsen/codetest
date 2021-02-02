@@ -1,13 +1,10 @@
 <?php
-/**
- * Template part for displaying posts
- */
-
+// Template part for displaying posts
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<header class="entry-header alignwide">
+	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		<?php code_test_post_thumbnail(); ?>
 	</header>
@@ -20,14 +17,13 @@
 			array(
 				'before'   => '<nav class="page-links" aria-label="' . esc_attr__( 'Page', 'codetest' ) . '">',
 				'after'    => '</nav>',
-				/* translators: %: page number. */
 				'pagelink' => esc_html__( 'Page %', 'codetest' ),
 			)
 		);
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer default-max-width">
+	<footer class="entry-footer">
 		<?php code_test_entry_meta_footer(); ?>
 	</footer><!-- .entry-footer -->
 

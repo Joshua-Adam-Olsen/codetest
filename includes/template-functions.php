@@ -47,12 +47,20 @@ add_action( 'wp_footer', 'code_test_supports_js' );
 // Changes comment form default fields.
 function code_test_comment_form_defaults( $defaults ) {
 
+	// Adjust width of comment form.
+	$defaults['comment_field'] = preg_replace( '/cols="\d+"/', 'cols="34"', $defaults['comment_field'] );
+
 	// Adjust height of comment form.
 	$defaults['comment_field'] = preg_replace( '/rows="\d+"/', 'rows="5"', $defaults['comment_field'] );
 
 	return $defaults;
 }
 add_filter( 'comment_form_defaults', 'code_test_comment_form_defaults' );
+
+function code_test_submit_comment_form( $submit_button ) {
+  return '<input name="submit" type="submit" id="submit" class="submit btn btn-primary" value="Post Comment"/>';
+}
+add_filter( 'comment_form_submit_button', 'code_test_submit_comment_form' );
 
 // Determines if post thumbnail can be displayed.
 function code_test_can_show_post_thumbnail() {
@@ -71,7 +79,7 @@ function code_test_get_avatar_size() {
 function code_test_continue_reading_text() {
 	$continue_reading = sprintf(
 		esc_html__( 'Continue reading %s', 'codetest' ),
-		the_title( '<span class="screen-reader-text">', '</span>', false )
+		the_title( '<span class="sr-only">', '</span>', false )
 	);
 
 	return $continue_reading;
@@ -80,7 +88,7 @@ function code_test_continue_reading_text() {
 // Create the continue reading link for excerpt.
 function code_test_continue_reading_link_excerpt() {
 	if ( ! is_admin() ) {
-		return '&hellip; <a class="more-link" href="' . esc_url( get_permalink() ) . '">' . code_test_continue_reading_text() . '</a>';
+		return '&hellip;</br></br><a class="more-link btn btn-primary" href="' . esc_url( get_permalink() ) . '">' . code_test_continue_reading_text() . '</a>';
 	}
 }
 

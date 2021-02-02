@@ -1,16 +1,13 @@
 <?php
-/**
- * Template part for displaying posts
- */
-
+// Template part for displaying posts
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php if ( is_singular() ) : ?>
-			<?php the_title( '<h1 class="entry-title default-max-width">', '</h1>' ); ?>
+			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		<?php else : ?>
-			<?php the_title( sprintf( '<h2 class="entry-title default-max-width"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+			<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 		<?php endif; ?>
 
 		<?php code_test_post_thumbnail(); ?>
@@ -26,7 +23,6 @@
 			array(
 				'before'   => '<nav class="page-links" aria-label="' . esc_attr__( 'Page', 'codetest' ) . '">',
 				'after'    => '</nav>',
-				/* translators: %: page number. */
 				'pagelink' => esc_html__( 'Page %', 'codetest' ),
 			)
 		);
@@ -34,7 +30,7 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer default-max-width">
+	<footer class="entry-footer">
 		<?php code_test_entry_meta_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-${ID} -->
