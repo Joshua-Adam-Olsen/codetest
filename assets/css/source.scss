@@ -19,8 +19,13 @@ html, body {
 	overflow-x: hidden;
 }
 
-.comment-form-comment label {
-	display: block;
+.comment-form {
+	label:not(label[for='wp-comment-cookies-consent']) {
+		display: block;
+	}
+	input:not(input[name='wp-comment-cookies-consent']) {
+		width: 18.3rem;
+	}
 }
 
 #masthead {
@@ -215,6 +220,7 @@ html, body {
 	align-content: center;
 	#menu-secondary-menu {
 		flex-flow: column nowrap;
+		border-bottom: 0.125rem solid $white;
 		@media only screen and (min-width: 768px) {
 			flex-flow: row wrap;
 			.nav-link {
@@ -281,4 +287,3 @@ html, body {
     }
 	}
 }
-

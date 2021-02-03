@@ -37,6 +37,9 @@ if ( have_posts() ) {
 
 		// Include the content excerpt.
 		get_template_part( 'template-parts/content/content-excerpt' );
+
+		echo '<div class="pt-5"><div>';
+
 	} // End the loop.
 
 	// Previous/next page navigation.

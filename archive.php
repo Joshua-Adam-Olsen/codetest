@@ -18,6 +18,7 @@ $description = get_the_archive_description();
 	<?php while ( have_posts() ) : ?>
 		<?php the_post(); ?>
 		<?php get_template_part( 'template-parts/content/content-excerpt' ); ?>
+		<?php echo '<div class="pt-5"><div>'; ?>
 	<?php endwhile; ?>
 
 	<?php code_test_the_posts_navigation(); ?>

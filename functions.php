@@ -100,9 +100,6 @@ if ( ! function_exists( 'code_test_setup' ) ) {
 
 		// Add support for custom units.
 		add_theme_support( 'custom-units' );
-
-		// Add support for align-wide and align-full.
-		add_theme_support( 'align-wide' );
 	}
 }
 add_action( 'after_setup_theme', 'code_test_setup' );

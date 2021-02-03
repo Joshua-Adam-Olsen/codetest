@@ -51,7 +51,7 @@ while ( have_posts() ) {
 				// Edit post link.
 				edit_post_link(
 					sprintf(
-						esc_html__( 'Edit %s', 'codetest' ),
+						esc_html__( ' Edit %s', 'codetest' ),
 						'<span class="sr-only">' . get_the_title() . '</span>'
 					),
 					'<span class="edit-link">',
@@ -75,7 +75,7 @@ while ( have_posts() ) {
 				// Edit post link.
 				edit_post_link(
 					sprintf(
-						esc_html__( 'Edit %s', 'codetest' ),
+						esc_html__( ' Edit %s', 'codetest' ),
 						'<span class="sr-only">' . get_the_title() . '</span>'
 					),
 					'<span class="edit-link">',

@@ -4,6 +4,6 @@ $codetest_aria_label = ! empty( $args['aria_label'] ) ? 'aria-label="' . esc_att
 ?>
 <form role="search" <?php echo $codetest_aria_label; ?> method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 	<label for="<?php echo esc_attr( $codetest_unique_id ); ?>"><?php _e( 'Search&hellip;', 'codetest' ); ?></label>
-	<input type="search" id="<?php echo esc_attr( $codetest_unique_id ); ?>" class="search-field" value="<?php echo get_search_query(); ?>" name="s" />
-	<input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button', 'codetest' ); ?>" />
+	<input type="search" id="<?php echo esc_attr( $codetest_unique_id ); ?>" class="search-field" value="<?php echo get_search_query(); ?>" name="s" /><br><br>
+	<input type="submit" class="search-submit btn btn-primary" value="<?php echo esc_attr_x( 'Search', 'submit button', 'codetest' ); ?>" />
 </form>

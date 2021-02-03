@@ -4,7 +4,11 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('card'); ?> style="min-width: 18rem;">
 
-	<?php if ( has_post_thumbnail() ) { ?>
+	<?php $post_custom_ACF_image = get_field('card_image', get_the_ID()); ?>
+
+	<?php if ( !empty($post_custom_ACF_image) ) { ?>
+		<img class="card-img-top" src="<?php echo $post_custom_ACF_image; ?>" alt="Card image cap">
+	<?php } elseif ( has_post_thumbnail() ) { ?>
 		<img class="card-img-top" src="<?php the_post_thumbnail_url(get_the_ID(),'full'); ?>" alt="Card image cap">
 	<?php } else { ?>
 		<img class="card-img-top" src="<?php echo get_template_directory_uri() . '/assets/img/card-placeholder.svg'; ?>" alt="Card image cap">
